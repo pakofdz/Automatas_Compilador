@@ -35,6 +35,8 @@
             this.btnEjecutar = new System.Windows.Forms.Button();
             this.txtExpresion = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblInOrden = new System.Windows.Forms.Label();
+            this.lblPostOrden = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +44,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.panel1.Controls.Add(this.lblPostOrden);
+            this.panel1.Controls.Add(this.lblInOrden);
             this.panel1.Controls.Add(this.btnParentesis);
             this.panel1.Controls.Add(this.lbPreorden);
             this.panel1.Controls.Add(this.pbImagen);
@@ -71,7 +75,7 @@
             // lbPreorden
             // 
             this.lbPreorden.AutoSize = true;
-            this.lbPreorden.Location = new System.Drawing.Point(913, 92);
+            this.lbPreorden.Location = new System.Drawing.Point(865, 38);
             this.lbPreorden.Name = "lbPreorden";
             this.lbPreorden.Size = new System.Drawing.Size(0, 13);
             this.lbPreorden.TabIndex = 4;
@@ -124,6 +128,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "INTRODUCE UNA EXPRESIÓN";
             // 
+            // lblInOrden
+            // 
+            this.lblInOrden.AutoSize = true;
+            this.lblInOrden.Location = new System.Drawing.Point(865, 67);
+            this.lblInOrden.Name = "lblInOrden";
+            this.lblInOrden.Size = new System.Drawing.Size(0, 13);
+            this.lblInOrden.TabIndex = 6;
+            // 
+            // lblPostOrden
+            // 
+            this.lblPostOrden.AutoSize = true;
+            this.lblPostOrden.Location = new System.Drawing.Point(868, 105);
+            this.lblPostOrden.Name = "lblPostOrden";
+            this.lblPostOrden.Size = new System.Drawing.Size(0, 13);
+            this.lblPostOrden.TabIndex = 7;
+            // 
             // FormArbol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,6 +169,8 @@
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.Label lbPreorden;
         private System.Windows.Forms.Button btnParentesis;
+        private System.Windows.Forms.Label lblPostOrden;
+        private System.Windows.Forms.Label lblInOrden;
     }
 }
 

@@ -8,33 +8,30 @@ namespace ArbolExpresionesAritmeticas
 {
     public class Arbol
     {
-        #region CAMPOS DE CLASE
-        /// <INICIALIZACION DE ARREGLOS Y VARIABLES>
-        /// Precedencia es la jerarquia de las operaciones, delimitadores delimitan el string (numeros de operadores)
-        /// Incersion en cola
-        /// </INICIALIZACION DE ARREGLOS Y VARIABLES>
-
+        #region Campos de clase 
+        //insercion de cola
         private string precedencia = "+-*/^";
-        private string[] delimitadores = { "+", "-", "*", "/", "^"};
+        private string[] delimitadores = { "+", "-", "*", "/", "^" };
         private string[] operandosArray;
         private string[] operadoresArray;
         private Queue colaExpresion;
 
-        //CREACION DEL ARBOL
+        //creacion del arbol
         private string token;
-        private string operadorTemp;
+        private string operadorTemporal;
         private int i = 0;
-        private Stack pilaOperadores;
         private Stack pilaOperandos;
+        private Stack pilaOperadores;
         private Stack pilaDot;
         private Nodo raiz = null;
 
         public Nodo nodoDot { get; set; }
 
-        //PROPIEDADES PARA RECORRIDOS
+        //popiedades para el recorrido
         public string cadenaPreorden { get; set; }
         public string cadenaInorden { get; set; }
         public string cadenaPostorden { get; set; }
+
         #endregion
 
         /// <BALANCEO DE PARENTESIS>
@@ -175,7 +172,7 @@ namespace ArbolExpresionesAritmeticas
         /// <Arbol Constructores>
         /// inicializa el arbol (constructores)
         /// </Arbol Constructores>
-        #region CONSTRUCTORES
+        #region Constructores
         public Arbol()
         {
             pilaOperadores = new Stack();
@@ -188,7 +185,8 @@ namespace ArbolExpresionesAritmeticas
         public string fnQuitarParentesis(string s)
         {
             string aux = string.Empty;
-            foreach(char item in s)
+            
+            foreach (char item in s)
             {
                 if(!item.Equals('(') || !item.Equals(')'))
                 {
@@ -201,31 +199,24 @@ namespace ArbolExpresionesAritmeticas
         /// <Insercion de la expresion en la cola>
         /// Se separa la expresion en caracteres y se agrega en sus respectivos arrays
         /// </Insercion de la expresion en la cola>
-        #region INSERCION EN COLA
-        public void InsertarEnCola(string expresion)
+        #region insercion cola
+        public void insertarCola(string expresion)
         {
-           
             operandosArray = expresion.Split(delimitadores, StringSplitOptions.RemoveEmptyEntries);
-            for(int i=0; i< operandosArray.Length-1; i++)
-            {
-                operandosArray[i] = fnQuitarParentesis(operandosArray[i]);
-            }
             operadoresArray = expresion.Split(operandosArray, StringSplitOptions.RemoveEmptyEntries);
-
             for (int i = 0; colaExpresion.Count < operandosArray.Length + (operadoresArray.Length - 1); i++)
             {
                 colaExpresion.Enqueue(operandosArray[i]);
                 colaExpresion.Enqueue(operadoresArray[i]);
+
             }
             colaExpresion.Enqueue(operandosArray[operandosArray.Length - 1]);
+
         }
         #endregion
 
-        /// <Dibujo del arbol>
-        /// Se crea el arbol en lenguaje dot
-        /// </Dibujo del arbol>
-        #region ARBOL
-        public Nodo CrearArbol()
+        #region Arbol
+        public Nodo crearArbol()
         {
             while (colaExpresion.Count != 0)
             {
@@ -239,32 +230,33 @@ namespace ArbolExpresionesAritmeticas
                 {
                     if (pilaOperadores.Count != 0)
                     {
-                        operadorTemp = (string)pilaOperadores.Peek();
-                        while (pilaOperadores.Count != 0 && precedencia.IndexOf(operadorTemp) >= precedencia.IndexOf(token))
+                        operadorTemporal = (string)pilaOperadores.Peek();//lo que tiene arriba de la pila
+                        while (pilaOperadores.Count != 0 && precedencia.IndexOf(operadorTemporal) >= precedencia.IndexOf(token))
                         {
-                            GuardaSubArbol();
+                            GuardarSubArbol();
                             if (pilaOperadores.Count != 0)
                             {
-                                operadorTemp = (string)pilaOperadores.Peek();
+                                operadorTemporal = (string)pilaOperadores.Peek();
                             }
                         }
                     }
                     pilaOperadores.Push(token);
                 }
             }
+
             raiz = (Nodo)pilaOperandos.Peek();
             nodoDot = (Nodo)pilaDot.Peek();
             while (pilaOperadores.Count != 0)
             {
-                GuardaSubArbol();
+                GuardarSubArbol();
                 raiz = (Nodo)pilaOperandos.Peek();
                 nodoDot = (Nodo)pilaDot.Peek();
             }
+
             return raiz;
         }
 
-       
-        private void GuardaSubArbol()
+        private void GuardarSubArbol()
         {
             Nodo derecho = (Nodo)pilaOperandos.Pop();
             Nodo izquierdo = (Nodo)pilaOperandos.Pop();
@@ -274,40 +266,41 @@ namespace ArbolExpresionesAritmeticas
             Nodo izquierdoG = (Nodo)pilaDot.Pop();
             pilaDot.Push(new Nodo(derechoG, izquierdoG, $"nodo{++i}[label=\"{pilaOperadores.Pop()}\"]"));
         }
+
         #endregion
 
-        #region RECORRIDOS
-        //PREORDEN
-        public string InsertaPre(Nodo tree)
+        #region Recorridos
+        //preorden
+        public string insertarPre(Nodo tree)
         {
             if (tree != null)
             {
                 cadenaPreorden += tree.Datos + " ";
-                InsertaPre(tree.NodoIzquierdo);
-                InsertaPre(tree.NodoDerecho);
+                insertarPre(tree.NodoIzquierdo);
+                insertarPre(tree.NodoDerecho);
             }
             return cadenaPreorden;
-        }
 
-        //INORDEN
-        public string InsertaIn(Nodo tree)
+        }
+        //inorden
+        public string insertarIn(Nodo tree)
         {
             if (tree != null)
             {
-                InsertaIn(tree.NodoIzquierdo);
+                insertarIn(tree.NodoIzquierdo);
                 cadenaInorden += tree.Datos + " ";
-                InsertaIn(tree.NodoDerecho);
+                insertarIn(tree.NodoDerecho);
             }
             return cadenaInorden;
         }
 
-        //POSTORDEN
-        public string InsertaPost(Nodo tree)
+        //posorden
+        public string insertarPost(Nodo tree)
         {
             if (tree != null)
             {
-                InsertaPost(tree.NodoIzquierdo);
-                InsertaPost(tree.NodoDerecho);
+                insertarPost(tree.NodoIzquierdo);
+                insertarPost(tree.NodoDerecho);
                 cadenaPostorden += tree.Datos + " ";
             }
             return cadenaPostorden;
@@ -316,8 +309,8 @@ namespace ArbolExpresionesAritmeticas
 
         public void Limpiar()
         {
-            cadenaPreorden = "";
             cadenaInorden = "";
+            cadenaPreorden = "";
             cadenaPostorden = "";
         }
     }

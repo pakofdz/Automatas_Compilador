@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -137,89 +138,23 @@ namespace Automatas_Compilador
 
         public string checkOperators(string s)//el parametro "s" se refiera a la expresion 
         {
-            string result = "YES"; //la variable result se utiliza para llevar un control de cuando los parentesis estan balanceados
-            Stack stack = new Stack(); //la pila llamada stack es donde se van guardando los caracteres de la expresion para ser recorrida
-            string error = "Error Sintactico", descripcion = "";
-            int abierto = 0; //lleva el conteo de los parentesis que abren
-            int cerrado = 0; //lleva el conteo de los parentesis que cierran
+            string descripcion = "";
+            var cc1 = s;
 
-            string[] operators = { "+", "-", "*", "/" };
-            int[] numeros = { 0,1,2,3,4,5,6,7,8,9 };
+            var regex = @"([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)";
+            //var regex = @"^\d+\s*[+-]\s*\d+\s*=\s*\d+$";
+            //var regex = @"[0-9()+\-*/.]";
+            //var regex = @"^([0-9]([+]|[-]|[*]|[\/]))+[0-9]+[=][0-9]+$";
 
-            for (int i = 0; i < s.Length; i++) //en este for se recorre todo el texto del codigo de nuestro compilador
+
+            Match match = Regex.Match(cc1, regex, RegexOptions.IgnoreCase);
+
+            if (cc1 != string.Empty && !match.Success)
             {
-
-                if (s[i].ToString() == "+")
-                {
-                    stack.Push(s[i].ToString()); //si se encuentra un parentesis abierto se hara un push a la pila
-                    if (s[i-1].ToString() == "1")
-                    {
-                        stack.Push(s[i].ToString());
-                    }
-                }
-                else if (s[i].ToString() == "1") //verifica si la pila esta llena o no
-                {
-                    stack.Push(s[i].ToString());
-                }
-                else
-                {
-                    //MessageBox.Show("PARENTESIS NO BALANCEADOS");
-                    result = "NO";
-                }
-            }
-            //if (result == "NO" || stack.Count > 0)
-            //return descripcion;
-            //MessageBox.Show("PARENTESIS NO BALANCEADOS");
-            //else
-            //MessageBox.Show("PARENTESIS BALANCEADOS");
-
-            /*/if (stack.Count > 0)
-            {
-                MessageBox.Show("PARENTESIS NO BALANCEADOS");
-            }*/
-
-            /*if (result == "YES")
-            {
-                //MessageBox.Show("PARENTESIS BALANCEADOS");
-            }
-            else
-            {*/
-            for (int i = 0;     i < s.Length; i++)
-            {
-                if (s[i].ToString() == "{"
-               || s[i].ToString() == "("
-               || s[i].ToString() == "[")
-                {
-                    abierto += 1;
-                }
-
-                if (s[i].ToString() == "}"
-               || s[i].ToString() == ")"
-               || s[i].ToString() == "]")
-                {
-                    cerrado += 1;
-                }
-            }
-            //><
-            if (abierto > cerrado)
-            {
-                //MessageBox.Show("La expresión tiene mas paréntesis que abren que los que se cierran");
-                descripcion = "La expresión tiene mas paréntesis que abren que los que se cierran";
+                descripcion = "ERROR";
                 return descripcion;
             }
-            if (abierto < cerrado)
-            {
-                //MessageBox.Show("La expresión tiene mas paréntesis que cierran que los que se abren");
-                descripcion = "La expresión tiene mas paréntesis que cierran que los que se abren";
-                return descripcion;
-            }
-            if (abierto == cerrado)
-            {
-                //MessageBox.Show("PARENTESIS BALANCEADOS");
-            }
-
             return descripcion;
-            //return result;
         }
     }
 }

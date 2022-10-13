@@ -27,13 +27,16 @@ namespace ArbolExpresionesAritmeticas
         {
             if(txtExpresion.Text != "")
             {
-                arbol.InsertarEnCola(txtExpresion.Text);
-                raiz = arbol.CrearArbol();
+                arbol.insertarCola(txtExpresion.Text);
+                raiz = arbol.crearArbol();
                 arbol.Limpiar();
-                lbPreorden.Text = arbol.InsertaPost(raiz);
+                lbPreorden.Text = arbol.insertarPre(raiz);
+                lblInOrden.Text = arbol.insertarIn(raiz);
+                lblPostOrden.Text = arbol.insertarPost(raiz);
                 grafico = new Grafico(arbol.nodoDot);
                 grafico.DrawTree();
                 ShowTree();
+                
             }
             else
             {

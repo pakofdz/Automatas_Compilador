@@ -38,15 +38,11 @@ namespace ArbolExpresionesAritmeticas
         }
         #endregion
 
-        #region Propiedades clase nodo
-        //Nodoizquierdo
+        #region Propiedades de la clase Nodo
+        //nodo izquierdo
         public Nodo NodoIzquierdo { get => nodoIzquierdo; set => nodoIzquierdo = value; }
-
-        //NodoDerecho
         public Nodo NodoDerecho { get => nodoDerecho; set => nodoDerecho = value; }
-
-        //Datos
         public Object Datos { get => datos; set => datos = value; }
-        #endregion
+        #endregion  
     }
 }

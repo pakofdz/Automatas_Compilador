@@ -61,16 +61,17 @@ namespace ArbolExpresionesAritmeticas
 
         public void Recorrido(Nodo arbol, ref string cadenaDot)
         {
-            if(arbol != null)
+            if (arbol != null)
             {
                 cadenaDot += $"{arbol.Datos}\n";
-                if(arbol.NodoIzquierdo != null)
+
+                if (arbol.NodoIzquierdo != null)
                 {
                     i = arbol.Datos.ToString().IndexOf("[");
                     j = arbol.NodoIzquierdo.Datos.ToString().IndexOf("[");
                     cadenaDot += $"{arbol.Datos.ToString().Remove(i)}->{arbol.NodoIzquierdo.Datos.ToString().Remove(j)};\n";
                 }
-                if(arbol.NodoDerecho != null)
+                if (arbol.NodoDerecho != null)
                 {
                     i = arbol.Datos.ToString().IndexOf("[");
                     j = arbol.NodoDerecho.Datos.ToString().IndexOf("[");
@@ -78,6 +79,7 @@ namespace ArbolExpresionesAritmeticas
                 }
                 Recorrido(arbol.NodoIzquierdo, ref cadenaDot);
                 Recorrido(arbol.NodoDerecho, ref cadenaDot);
+                
             }
         }
 

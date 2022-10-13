@@ -109,21 +109,20 @@ namespace Automatas_Compilador
 
                     if (palabra[j] != "")
                     {
-                        if (brackets.checkBalanced(txtCode.Text) != "")
-                        {
-                            DataGridViewRow err = (DataGridViewRow)gridErrores.Rows[0].Clone();
-                            err.Cells[0].Value = "PARENTESIS NO BALANCEADOS";
-                            err.Cells[1].Value = brackets.checkBalanced(txtCode.Text); 
-                            err.Cells[2].Value = j + 1;
-                            err.Cells[3].Value = i + 1;
-                            gridErrores.Rows.Add(err);
-                        }
-
                         if (brackets.checkOperators(txtCode.Text) != "")
                         {
                             DataGridViewRow err = (DataGridViewRow)gridErrores.Rows[0].Clone();
                             err.Cells[0].Value = "ERROR DE OPERADOR";
                             err.Cells[1].Value = brackets.checkOperators(txtCode.Text);
+                            err.Cells[2].Value = j + 1;
+                            err.Cells[3].Value = i + 1;
+                            gridErrores.Rows.Add(err);
+                        }
+                        if (brackets.checkBalanced(txtCode.Text) != "")
+                        {
+                            DataGridViewRow err = (DataGridViewRow)gridErrores.Rows[0].Clone();
+                            err.Cells[0].Value = "PARENTESIS NO BALANCEADOS";
+                            err.Cells[1].Value = brackets.checkBalanced(txtCode.Text); 
                             err.Cells[2].Value = j + 1;
                             err.Cells[3].Value = i + 1;
                             gridErrores.Rows.Add(err);
@@ -205,6 +204,11 @@ namespace Automatas_Compilador
             limpiarTokens();
             tokens();
             colores();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

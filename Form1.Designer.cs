@@ -50,12 +50,24 @@
             this.FilaErr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblLenguaje = new System.Windows.Forms.Label();
             this.checkBoxLenguaje = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.op = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arg1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arg2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelCode.SuspendLayout();
             this.panelToken.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTokens)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridErrores)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCode
@@ -69,11 +81,12 @@
             // txtCode
             // 
             this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.txtCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCode.Font = new System.Drawing.Font("Verdana", 14.25F);
             this.txtCode.ForeColor = System.Drawing.SystemColors.Window;
-            this.txtCode.Location = new System.Drawing.Point(3, 3);
+            this.txtCode.Location = new System.Drawing.Point(0, 0);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(730, 336);
+            this.txtCode.Size = new System.Drawing.Size(736, 366);
             this.txtCode.TabIndex = 1;
             this.txtCode.Text = "";
             this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged_1);
@@ -181,7 +194,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.gridErrores);
+            this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Location = new System.Drawing.Point(15, 446);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(964, 157);
@@ -196,11 +209,10 @@
             this.Descripcion,
             this.ColumnaErr,
             this.FilaErr});
-            this.gridErrores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridErrores.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.gridErrores.Location = new System.Drawing.Point(0, 0);
             this.gridErrores.Name = "gridErrores";
-            this.gridErrores.Size = new System.Drawing.Size(964, 157);
+            this.gridErrores.Size = new System.Drawing.Size(972, 135);
             this.gridErrores.TabIndex = 0;
             // 
             // Error
@@ -250,6 +262,79 @@
             this.checkBoxLenguaje.UseVisualStyleBackColor = true;
             this.checkBoxLenguaje.CheckedChanged += new System.EventHandler(this.checkBoxLenguaje_CheckedChanged);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(964, 157);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.gridErrores);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(956, 131);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(956, 131);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.op,
+            this.arg1,
+            this.arg2,
+            this.resultado});
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(957, 135);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // op
+            // 
+            this.op.HeaderText = "Opereador";
+            this.op.Name = "op";
+            this.op.Width = 228;
+            // 
+            // arg1
+            // 
+            this.arg1.HeaderText = "arg1";
+            this.arg1.Name = "arg1";
+            this.arg1.Width = 228;
+            // 
+            // arg2
+            // 
+            this.arg2.HeaderText = "arg2";
+            this.arg2.Name = "arg2";
+            this.arg2.Width = 228;
+            // 
+            // resultado
+            // 
+            this.resultado.HeaderText = "resultado";
+            this.resultado.Name = "resultado";
+            this.resultado.Width = 228;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +358,10 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridErrores)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,6 +391,14 @@
         private System.Windows.Forms.ToolStripMenuItem btnPalabrasResJama;
         private System.Windows.Forms.CheckBox checkBoxLenguaje;
         private System.Windows.Forms.RichTextBox txtCode;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn op;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arg1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn arg2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultado;
     }
 }
 

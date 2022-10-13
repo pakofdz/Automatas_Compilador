@@ -46,7 +46,7 @@ namespace Automatas_Compilador
 
             if (Int32.TryParse(item, out ok))
             {
-                str.Append("numerical constant");
+                str.Append("constante numerica");
                 return str.ToString();
             }
 
