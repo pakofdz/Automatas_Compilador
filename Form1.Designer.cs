@@ -51,10 +51,14 @@
             this.lblLenguaje = new System.Windows.Forms.Label();
             this.checkBoxLenguaje = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.resultado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.arg2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.arg1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.op = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arg1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.arg2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoDeTresDireccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelCode.SuspendLayout();
             this.panelToken.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTokens)).BeginInit();
@@ -62,6 +66,9 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridErrores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelCode
@@ -135,10 +142,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnResJama,
             this.btnMenuCompilar,
-            this.btnMenuArbol});
+            this.btnMenuArbol,
+            this.codigoDeTresDireccionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1323, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(994, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -189,10 +197,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.gridErrores);
+            this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Location = new System.Drawing.Point(15, 446);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(964, 157);
+            this.panel1.Size = new System.Drawing.Size(972, 165);
             this.panel1.TabIndex = 4;
             // 
             // gridErrores
@@ -204,11 +212,10 @@
             this.Descripcion,
             this.ColumnaErr,
             this.FilaErr});
-            this.gridErrores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridErrores.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
-            this.gridErrores.Location = new System.Drawing.Point(0, 0);
+            this.gridErrores.Location = new System.Drawing.Point(-6, -3);
             this.gridErrores.Name = "gridErrores";
-            this.gridErrores.Size = new System.Drawing.Size(964, 157);
+            this.gridErrores.Size = new System.Drawing.Size(963, 132);
             this.gridErrores.TabIndex = 0;
             // 
             // Error
@@ -267,44 +274,84 @@
             this.arg1,
             this.arg2,
             this.resultado});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
-            this.dataGridView1.Location = new System.Drawing.Point(985, 63);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(328, 366);
+            this.dataGridView1.Size = new System.Drawing.Size(944, 119);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // resultado
+            // tabControl1
             // 
-            this.resultado.HeaderText = "resultado";
-            this.resultado.Name = "resultado";
-            this.resultado.Width = 70;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(958, 151);
+            this.tabControl1.TabIndex = 0;
             // 
-            // arg2
+            // tabPage1
             // 
-            this.arg2.HeaderText = "arg2";
-            this.arg2.Name = "arg2";
-            this.arg2.Width = 70;
+            this.tabPage1.Controls.Add(this.gridErrores);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(950, 125);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // arg1
+            // tabPage2
             // 
-            this.arg1.HeaderText = "arg1";
-            this.arg1.Name = "arg1";
-            this.arg1.Width = 70;
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(950, 125);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // op
             // 
             this.op.HeaderText = "Opereador";
             this.op.Name = "op";
-            this.op.Width = 70;
+            this.op.Width = 260;
+            // 
+            // arg1
+            // 
+            this.arg1.HeaderText = "arg1";
+            this.arg1.Name = "arg1";
+            this.arg1.Width = 260;
+            // 
+            // arg2
+            // 
+            this.arg2.HeaderText = "arg2";
+            this.arg2.Name = "arg2";
+            this.arg2.Width = 260;
+            // 
+            // resultado
+            // 
+            this.resultado.HeaderText = "resultado";
+            this.resultado.Name = "resultado";
+            this.resultado.Width = 260;
+            // 
+            // codigoDeTresDireccionesToolStripMenuItem
+            // 
+            this.codigoDeTresDireccionesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.codigoDeTresDireccionesToolStripMenuItem.Name = "codigoDeTresDireccionesToolStripMenuItem";
+            this.codigoDeTresDireccionesToolStripMenuItem.Size = new System.Drawing.Size(161, 20);
+            this.codigoDeTresDireccionesToolStripMenuItem.Text = "Codigo de Tres Direcciones";
+            this.codigoDeTresDireccionesToolStripMenuItem.Click += new System.EventHandler(this.codigoDeTresDireccionesToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
-            this.ClientSize = new System.Drawing.Size(1323, 615);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(994, 620);
             this.Controls.Add(this.checkBoxLenguaje);
             this.Controls.Add(this.lblLenguaje);
             this.Controls.Add(this.panel1);
@@ -323,6 +370,9 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridErrores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,10 +403,14 @@
         private System.Windows.Forms.CheckBox checkBoxLenguaje;
         private System.Windows.Forms.RichTextBox txtCode;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridViewTextBoxColumn op;
         private System.Windows.Forms.DataGridViewTextBoxColumn arg1;
         private System.Windows.Forms.DataGridViewTextBoxColumn arg2;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultado;
+        private System.Windows.Forms.ToolStripMenuItem codigoDeTresDireccionesToolStripMenuItem;
     }
 }
 

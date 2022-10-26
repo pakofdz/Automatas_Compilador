@@ -215,5 +215,10 @@ namespace Automatas_Compilador
         {
 
         }
+
+        private void codigoDeTresDireccionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

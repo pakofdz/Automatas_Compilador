@@ -156,5 +156,27 @@ namespace Automatas_Compilador
             }
             return descripcion;
         }
+
+
+        public string Cuadruplos(string s)//el parametro "s" se refiera a la expresion 
+        {
+            string descripcion = "";
+            var cc1 = s;
+
+            var regex = @"([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)";
+            //var regex = @"^\d+\s*[+-]\s*\d+\s*=\s*\d+$";
+            //var regex = @"[0-9()+\-*/.]";
+            //var regex = @"^([0-9]([+]|[-]|[*]|[\/]))+[0-9]+[=][0-9]+$";
+
+
+            Match match = Regex.Match(cc1, regex, RegexOptions.IgnoreCase);
+
+            if (cc1 != string.Empty && !match.Success)
+            {
+                descripcion = "ERROR";
+                return descripcion;
+            }
+            return descripcion;
+        }
     }
 }
