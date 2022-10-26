@@ -210,5 +210,10 @@ namespace Automatas_Compilador
         {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

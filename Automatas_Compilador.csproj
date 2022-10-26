@@ -53,7 +53,6 @@
     <Compile Include="ArbolExp.Designer.cs">
       <DependentUpon>ArbolExp.cs</DependentUpon>
     </Compile>
-    <Compile Include="CuadrupleGenerator.cs" />
     <Compile Include="Cuadruplos.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
